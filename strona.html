@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Biogaz</title>
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #e8f5e9;
+            margin: 0;
+            color: #2e7d32;
+        }
+
+        #container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        header {
+            background-color: #388e3c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        nav {
+            background-color: #66bb6a;
+            text-align: center;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            display: none;
+            padding: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .window {
+            background-color: #f1f8e9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 0 0 10px 10px;
+            font-size: 0.9em;
+        }
+
+        input, button {
+            padding: 8px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #388e3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2e7d32;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 25px;
+        }
+
+        a.link {
+            color: #1b5e20;
+            text-decoration: none;
+        }
+
+        a.link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+
+    <header>
+        <h1>Biogaz jako odnawialne źródło energii</h1>
+        <p>Dowiedz się wszystkiego o biogazie</p>
+    </header>
+
+    <nav>
+        <a onclick="pokaz('start')">Strona główna</a>
+        <a onclick="pokaz('sklad')">Skład</a>
+        <a onclick="pokaz('produkcja')">Produkcja</a>
+        <a onclick="pokaz('zastosowanie')">Zastosowanie</a>
+        <a onclick="pokaz('zrodla')">Źródła</a>
+    </nav>
+
+    <!-- STRONA GŁÓWNA -->
+    <div id="start" class="section active">
+        <div class="window">
+            <h2>Co to jest biogaz?</h2>
+            <p>Biogaz to mieszanina gazów powstająca podczas beztlenowego rozkładu substancji organicznych. 
+            To odnawialne źródło energii, które pomaga ograniczać emisję CO₂ i wykorzystuje odpady rolnicze.</p>
+        </div>
+
+        <div class="window">
+            <h2>Dlaczego warto?</h2>
+            <ul>
+                <li>Odnawialna energia</li>
+                <li>Redukcja odpadów organicznych</li>
+                <li>Korzyści dla środowiska</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SKŁAD -->
+    <div id="sklad" class="section">
+        <div class="window">
+            <h2>Skład biogazu</h2>
+            <ul>
+                <li>Metan (CH₄): 50–70%</li>
+                <li>Dwutlenek węgla (CO₂): 30–45%</li>
+                <li>Siarkowodór (H₂S): 1%-5%</li>
+                <li>Azot, para wodna, tlen – poniżej 1%</li>
+            </ul>
+        </div>
+
+        <div class="window">
+            <h2>Znaczenie składu</h2>
+            <p>To zawartość metanu decyduje o wartości energetycznej biogazu. 
+            Im większy udział CH₄, tym bardziej efektywne spalanie i większa ilość energii.</p>
+        </div>
+    </div>
+
+    <!-- PRODUKCJA -->
+    <div id="produkcja" class="section">
+        <div class="window">
+            <h2>Produkcja biogazu</h2>
+            <p>Biogaz wytwarza się w procesie fermentacji metanowej. 
+            Surowce organiczne (obornik, resztki roślinne, odpady spożywcze) są rozkładane przez bakterie w warunkach beztlenowych.</p>
+        </div>
+
+        <div class="window">
+            <h2>Oblicz energię z biogazu</h2>
+            <p>Podaj ilość biogazu (m³):</p>
+            <input type="number" id="ilosc" min="0" placeholder="np. 100">
+            <button onclick="oblicz()">Oblicz</button>
+            <p id="wynik"></p>
+        </div>
+    </div>
+
+    <!-- ZASTOSOWANIE -->
+    <div id="zastosowanie" class="section">
+        <div class="window">
+            <h2>Zastosowanie biogazu</h2>
+            <ul>
+                <li>Produkcja energii elektrycznej i cieplnej</li>
+                <li>Ogrzewanie budynków</li>
+                <li>Zasilanie pojazdów biometanem</li>
+                <li>Produkcja nawozów naturalnych (poferment)</li>
+            </ul>
+        </div>
+
+        <div class="window">
+            <h2>Korzyści społeczne</h2>
+            <p>Wykorzystanie biogazu poprawia bezpieczeństwo energetyczne, wspiera lokalne rolnictwo 
+            i redukuje ilość odpadów organicznych w środowisku.</p>
+        </div>
+    </div>
+
+    <!-- ŹRÓDŁA -->
+    <div id="zrodla" class="section">
+        <div class="window">
+            <h2>Źródła</h2>
+                        <ul>
+                <li><a href="https://pl.wikipedia.org/wiki/Biogaz" target="_blank" class="link">Wikipedia – Biogaz</a></li>
+                <li><a href="https://www.gov.pl/web/klimat/biogaz" target="_blank" class="link">Ministerstwo Klimatu i Środowiska – Biogaz</a></li>
+                <li><a href="#" class="link">Magazyn Biomasa - Biogaz – definicja, powstawanie i zagospodarowanie</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        ©Konrad Sulikowski, Andrii Podufalyi. 2025
+    </footer>
+
+</div>
+
+<script>
+    // --- Pokazywanie odpowiednich sekcji ---
+    function pokaz(nazwa) {
+        const sekcje = document.querySelectorAll('.section');
+        sekcje.forEach(s => s.classList.remove('active'));
+        document.getElementById(nazwa).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- Obliczenia energii z biogazu ---
+    function oblicz() {
+        const ilosc = parseFloat(document.getElementById("ilosc").value);
+        const energiaNaM3 = 6.0; // kWh/m³
+        if (isNaN(ilosc) || ilosc <= 0) {
+            document.getElementById("wynik").innerHTML = "❗ Podaj poprawną wartość!";
+            return;
+        }
+        const energia = ilosc * energiaNaM3;
+        document.getElementById("wynik").innerHTML =
+            `Z ${ilosc} m³ biogazu można uzyskać ok. <strong>${energia.toFixed(2)} kWh</strong> energii. ⚡`;
+    }
+</script>
+</body>
+</html>
